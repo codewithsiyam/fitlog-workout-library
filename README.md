@@ -1,72 +1,93 @@
 # 💪 FitLog — Workout Library
 
-FitLog is a dark-themed gym companion web app built for the Programming Hero B14-A6 assignment. You browse a library of 12 workouts, open any one of them to see the full instructions and stats, then add it to "Today's Plan" or save it for later. Everything you add shows up live on the My Plan page, and the navbar badges update as you go.
+FitLog is a responsive workout library and planning web application built for the **Programming Hero B14-A6 assignment**.
 
-Built with **TypeScript** throughout (not JavaScript) for proper typing on the API data, context state, and component props. The code is still kept simple and readable on purpose — no fancy state managers, no over-engineering, just plain typed React + Context API.
+Users can explore workouts from the FitLog API, view detailed workout information, add workouts to Today's Plan, save workouts for later, and manage their plan from the My Plan page.
 
 ---
 
 ## 🔧 Technologies Used
 
-- **Next.js 14 (App Router)** — routing and pages
-- **React + TypeScript (.tsx)** — UI, fully typed
-- **Tailwind CSS** — all styling
-- **Context API + useState/useEffect** — global state for the plan, saved list, and toasts
-- **lucide-react** — icons
-- **localStorage** — so your plan/saved list survives a page refresh
+* **Next.js 14 (App Router)**
+* **React + TypeScript**
+* **Tailwind CSS**
+* **Context API**
+* **useState & useEffect**
+* **REST API**
+* **lucide-react**
+* **localStorage**
+
+---
 
 ## ✨ Features
 
-1. **Live workout library** — all 12 workouts are pulled from the FitLog API, not hardcoded, with a proper loading state and error state.
-2. **Search + Sort** — search by workout name or muscle tag, and sort the library by Duration, Calories, or Rating.
-3. **Today's Plan (max 5)** — add a workout to today's plan from its detail page. The "Add" button disables itself once the plan hits 5 lifts, and duplicate adds are blocked.
-4. **Saved for later + Mark as Done + Remove** — save workouts to check out later, tick a workout off as done from the My Plan page, or remove it with the X button. A "Clear completed" link appears once something is marked done, so you can reset the done state without removing the workouts.
-5. **Persists after refresh** — your plan, saved list, and completed workouts are stored in `localStorage`, so reloading the page doesn't wipe your progress.
-6. **Fully responsive** — 3 columns on desktop, 2 on tablet, 1 on mobile. Navbar, hero, and cards all reflow correctly.
-7. **Custom 404 page** — visiting a route that doesn't exist, or a workout id that isn't real, shows a proper "not found" page instead of crashing.
+* **Workout Library** — Browse all available workouts fetched from the FitLog API.
+* **Workout Details** — View workout information, equipment, difficulty, sets, reps, calories, rating, and instructions.
+* **Today's Plan** — Add up to 5 workouts to your daily plan and manage them easily.
+* **Saved Workouts** — Save workouts for later and access them from the My Plan page.
+* **Search & Sort** — Search workouts by name or muscle group and sort them by duration, calories, or rating.
+* **Mark as Done** — Mark completed workouts and keep track of your progress.
+* **Local Storage** — Plan, saved workouts, and completed status remain available after refreshing the page.
+* **Responsive Design** — Optimized for mobile, tablet, and desktop screens.
+* **Loading & Error States** — Provides proper loading feedback and handles API errors gracefully.
+* **Custom 404 Page** — Invalid routes and workout IDs show a friendly not-found page.
 
-## 🌐 API Used
+---
 
-All workout data comes from this API (no static/fake data anywhere in the app):
+## 🌐 API
 
+FitLog uses the following API for workout data:
+
+**All Workouts**
+
+```text
+https://api.abcz.workers.dev/api/fitlog
 ```
-GET https://api.abcz.workers.dev/api/fitlog          → all workouts
-GET https://api.abcz.workers.dev/api/fitlog/:id       → one workout by id
+
+**Single Workout**
+
+```text
+https://api.abcz.workers.dev/api/fitlog/:id
 ```
 
-## 📁 Folder Structure
+---
 
-```
+## 📁 Project Structure
+
+```text
 fitlog-app/
 ├── app/
-│   ├── layout.tsx               # root layout (navbar, footer, fonts, providers)
-│   ├── page.tsx                 # home page (hero + library)
+│   ├── layout.tsx
+│   ├── page.tsx
 │   ├── globals.css
-│   ├── not-found.tsx            # custom 404 page
 │   ├── loading.tsx
+│   ├── not-found.tsx
 │   ├── my-plan/
-│   │   └── page.tsx             # My Plan page (tabs, metrics, list)
+│   │   └── page.tsx
 │   └── workouts/
 │       └── [id]/
-│           ├── page.tsx         # workout detail page
+│           ├── page.tsx
 │           ├── loading.tsx
-│           └── error.tsx        # friendly error if the API call fails
+│           └── error.tsx
+│
 ├── components/
 │   ├── Navbar.tsx
 │   ├── Footer.tsx
 │   ├── Hero.tsx
-│   ├── Library.tsx              # fetch + search + sort + grid
+│   ├── Library.tsx
 │   ├── WorkoutCard.tsx
 │   ├── PlanWorkoutCard.tsx
 │   ├── WorkoutActions.tsx
 │   ├── ToastContainer.tsx
 │   └── Loader.tsx
+│
 ├── context/
-│   └── PlanContext.tsx          # all global state lives here (typed)
+│   └── PlanContext.tsx
+│
 ├── lib/
-│   ├── types.ts                 # Workout, Toast, PlanTab types
-│   └── api.ts                   # typed fetch helpers
-├── tsconfig.json
+│   ├── api.ts
+│   └── types.ts
+│
 └── public/
     ├── logo.png
     └── banner.png
@@ -74,63 +95,57 @@ fitlog-app/
 
 ---
 
-## 🚀 Getting Started (after you unzip the project)
+## 🚀 Getting Started
 
-You need **Node.js 18 or newer** installed on your computer. Check with:
+Make sure you have **Node.js 18 or newer** installed.
+
+Check your Node.js version:
 
 ```bash
 node -v
 ```
 
-Then, inside the unzipped `fitlog-app` folder, run these commands in order:
-
-**1. Install the dependencies**
+### 1. Install dependencies
 
 ```bash
 npm install
 ```
 
-**2. Run it locally**
+### 2. Run the development server
 
 ```bash
 npm run dev
 ```
 
-Now open [http://localhost:3000](http://localhost:3000) in your browser. That's it — the app is running.
+Open:
 
-**3. (Optional) Build it for production, just to double check everything compiles**
+```text
+http://localhost:3000
+```
+
+### 3. Create a production build
 
 ```bash
 npm run build
 npm run start
 ```
 
-If `npm run build` finishes without errors (it type-checks the whole project too), you're safe to deploy.
+---
 
-> Note: the first time the app builds fonts (Oswald/Inter) it needs internet access, since they're pulled from Google Fonts during the build. That's normal and works fine on your machine and on Vercel.
+## ☁️ Deployment
+
+The project is ready to deploy on **Vercel**.
+
+1. Push the project to GitHub.
+2. Import the repository into Vercel.
+3. Deploy the project.
+4. Test the Home page, Workout Details, My Plan, and direct route reloads after deployment.
 
 ---
 
-## ☁️ Deploying (Vercel — free and easiest)
+## 📌 Assignment
 
-1. Push this project to a GitHub repository.
-2. Go to [vercel.com](https://vercel.com), sign in with GitHub, and click **"Add New Project"**.
-3. Import your repo. Vercel auto-detects it's a Next.js + TypeScript app — you don't need to change any settings.
-4. Click **Deploy** and wait a minute. You'll get a live link.
-5. Because this project uses the Next.js App Router properly (no static export), reloading any page — including `/my-plan` or `/workouts/3` — works fine after deployment.
+**Programming Hero — Batch 14**
+**Assignment 6 — FitLog**
 
-You can deploy the same way on Netlify or Cloudflare Pages if you prefer.
-
----
-
-## 📝 Notes for myself (things I made sure to handle)
-
-- Today's Plan is capped at 5 workouts, matching the subtitle on the My Plan page.
-- Badge counters in the navbar (`Plan` / `Saved`) both link to `/my-plan` and update instantly when something is added or removed.
-- Invalid workout ids (e.g. `/workouts/999`) show the 404 page instead of an empty/broken page.
-- No Lorem Ipsum, no placeholder text, no hardcoded workout data anywhere — everything comes from the API.
-- **Fixed a bug**: "Added to today's plan" was popping up as two toasts at once in dev mode. It happened because the toast call lived inside a `setState(prev => ...)` updater, and React 18 Strict Mode double-invokes those updaters on purpose to catch impure code. Moved the toast call outside the updater so it fires exactly once — see the comment in `context/PlanContext.tsx`.
-- **Audited "Save for later" end to end** against the live API: `plan` and `saved` are two separate arrays in `PlanContext`, each with its own duplicate check, its own toast text, and its own localStorage slot inside one JSON blob (`fitlog-state-v1`), so saving never touches the plan and vice versa. Removing from Saved filters that one array only, the navbar badge reads `saved.length` directly from context (no extra state to go stale), and the whole blob is only written back to `localStorage` after the initial read finishes (the `hydrated` flag), so a reload never wipes it.
-- **Widened the allowed image host** in `next.config.js` from one hardcoded hostname to any `https` host. The API's images do currently come from `img.magnific.com`, but hardcoding a single host is fragile — if that ever changes, `next/image` throws at runtime and takes the whole page down with it (Library grid, detail page, and My Plan cards all use `<Image>`).
-- **Added `app/workouts/[id]/error.tsx`**: if the single-workout API call ever fails (network hiccup, API downtime), the detail page now shows a branded "Couldn't load this workout" message with a "Try again" button instead of a raw framework error page.
-- **The navbar's "Saved" badge now opens straight on the Saved tab** (`/my-plan?tab=saved`), and "Plan" opens on Today's Plan (`/my-plan?tab=plan`) — same destination page the spec asks for, just with the right tab already active instead of always defaulting to Today's Plan.
+Built with React, Next.js, TypeScript, and Tailwind CSS.
