@@ -4,7 +4,7 @@ FitLog is a responsive workout library and planning web application built for th
 
 Users can explore workouts from the FitLog API, view detailed workout information, add workouts to Today's Plan, save workouts for later, and manage their plan from the My Plan page.
 
----
+
 
 ## 🔧 Technologies Used
 
@@ -17,7 +17,7 @@ Users can explore workouts from the FitLog API, view detailed workout informatio
 * **lucide-react**
 * **localStorage**
 
----
+
 
 ## ✨ Features
 
@@ -50,7 +50,7 @@ https://api.abcz.workers.dev/api/fitlog
 https://api.abcz.workers.dev/api/fitlog/:id
 ```
 
----
+
 
 ## 📁 Project Structure
 
@@ -93,7 +93,6 @@ fitlog-app/
     └── banner.png
 ```
 
----
 
 ## 🚀 Getting Started
 
@@ -130,7 +129,7 @@ npm run build
 npm run start
 ```
 
----
+
 
 ## ☁️ Deployment
 
@@ -141,7 +140,6 @@ The project is ready to deploy on **Vercel**.
 3. Deploy the project.
 4. Test the Home page, Workout Details, My Plan, and direct route reloads after deployment.
 
----
 
 ## 📌 Assignment
 

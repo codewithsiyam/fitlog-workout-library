@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container-px mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 py-8 sm:flex-row">
         <div className="flex items-center gap-2">
           <Image src="/logo.png" alt="FitLog logo" width={24} height={24} />
-          <span className="font-display text-base font-bold uppercase tracking-wide">
+          <span className="font-display text-base font-bold uppercase tracking-wide text-white">
             FitLog
           </span>
         </div>
